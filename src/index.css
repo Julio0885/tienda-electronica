@@ -1,0 +1,73 @@
+@import "tailwindcss";
+/* Estilos para el modo claro (por defecto) */
+body {
+    background-color: white;
+    color: black;
+}
+
+/* Estilos para el modo oscuro */
+.dark body {
+  background-color: black;
+  color: white;
+}
+
+div {
+    background-color: white;
+    color: black;
+}
+
+.dark div {
+    background-color: black;
+    color: white;
+}
+
+.primary {
+    color: #f42c37;
+}
+
+.secondary {
+    color: #f42c37;
+}
+
+.brandYellow {
+    color: #fdc62e;
+}
+
+.brandGreen {
+    color: #2dcc6f;
+}
+
+.brandBlue {
+    color: #1376f4;
+}
+
+.brandWhite {
+    color: #eeeeee;
+}
+
+
+/* Estilos para Dark Mode */
+.dark .primary {
+    color: #ff6b6b; /* Cambia el color en modo oscuro */
+}
+
+.dark .secondary {
+    color: #ff8787; /* Cambia el color en modo oscuro */
+}
+
+.dark .brandYellow {
+    color: #fbbf24; /* Amarillo más oscuro */
+}
+
+.dark .brandGreen {
+    color: #10b981; /* Verde más oscuro */
+}
+
+.dark .brandBlue {
+    color: #3b82f6; /* Azul más oscuro */
+}
+
+.dark .brandWhite {
+    color: #ffffff; /* Blanco puro */
+}
+
