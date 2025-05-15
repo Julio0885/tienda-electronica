@@ -45,11 +45,11 @@ export default function Hero() {
     }
     return (
         <div className='container ml-10 bg-red-500'>
-            <div className='overflow-hidden rounded-3xl w-full h-full min-h-[550px] sm:min-h-[650px] flex bg-gradient-to-r from-gray-300/80 to-gray-100
+            <div className='overflow-hidden rounded-3xl w-full h-full min-h-[550px] sm:min-h-[650px] flex bg-gradient-to-r from-gray-300 to-gray-100
             dark:from-gray-900 dark:to-gray-800 dark:text-white justify-center items-center'>
                 <div className='container pb-8 sm:pb-0'>
                 {/* Hero section*/}
-                <Slider {...settings} className='bg-gray-600 ml-4'>
+                <Slider {...settings} className='bg-gradient-to-r from-gray-300 to-gray-100 ml-4'>
                     {HeroData.map((data) => (
                         <div key={data.id}>
                             <div className='grid grid-cols-1 sm:grid-cols-2'>
@@ -63,7 +63,8 @@ export default function Hero() {
                                     <div>
                                         <Button 
                                         text="Shop Now"
-                                        textColor="text-white"/>
+                                        textColor="text-white"
+                                        bgcolor="bg-red-400"/>
                                     </div>
                                 </div>
                                 {/* Img section */}

@@ -39,7 +39,7 @@ import Button from '../Shared/Button';
                     bgcolor="bg-white"/>
                    </div> 
                 </div>
-                <img className="w-[320px] absolute -right-8 lg:top-[40px]" src={Image2} alt="" />
+                <img className="w-[320px] absolute -right-8 md:-right-16 top-8 lg:top-[40px]" src={Image2} alt="" />
             </div>
             {/* third col */}
             <div className='col-span-2 py-10 pl-5 bg-gradient-to-br from-red-600 to-red-500 text-white rounded-3xl relative
@@ -55,7 +55,7 @@ import Button from '../Shared/Button';
                     bgcolor="bg-white"/>
                    </div> 
                 </div>
-                <img className="w-[350px] absolute top-1/2 -translate-y-1/2 -right-0" src={Image3} alt="" />
+                <img className="w-70 md:w-[350px] absolute top-1/2 -translate-y-1/2 -right-0" src={Image3} alt="" />
             </div>
         </div>
       </div>

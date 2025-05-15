@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { IoMdSearch } from 'react-icons/io';
 import { FaShoppingCart } from "react-icons/fa";
 import { FaCaretDown } from "react-icons/fa";
@@ -22,7 +22,7 @@ const MenuLinks = [
   },
   {
     id: 4,
-    name: "Blogs",
+    name: "Agregar Producto",
     link: "/#blog",
   },
 ]
@@ -46,15 +46,40 @@ const DropdownLinks = [
 ]
 
 export default function Navbar() {
+  const [openMenu, setOpenMenu] = useState(false);
+
   return (
     <div className='bg-white dark:bg-gray-900 dark:text-white duration-200 relative z-40 mx-auto md:mx-auto '>
       <div className='py-4'>
         <div className='container flex justify-between items-center'>
             {/* Logo and Links section*/ }
             <div className='flex ml-10 md:ml-15 items-center gap-4'>
-                <a className="primary font-semibold tracking-widest text-2xl
-                uppercase sm:text-3xl"href="#">Eshop</a>
-                {/* Menu Items */}
+                <button 
+                className="primary font-semibold tracking-widest text-2xl
+                uppercase sm:text-3xl flex items-center"
+                onClick={() => setOpenMenu(!openMenu)} 
+                >eShop
+                 <FaCaretDown className={`ml-2 transition-transform ${openMenu ? "rotate-180" : ""}`} />
+                </button>
+                {/* Mobile submenu */}
+                {openMenu && (
+                  <div className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-900 rounded-md shadow-lg lg:hidden z-50">
+                <ul className="flex flex-col">
+                  {MenuLinks.map((data) => (
+                    <li key={data.id}>
+                      <a
+                        href={data.link}
+                        className="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 shadow-red-300 dark:hover:bg-gray-800"
+                        onClick={() => setOpenMenu(false)}
+                      >
+                        {data.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+                {/* Menu Items for desktop */}
                 <div className='hidden lg:block'>
                   <ul className='flex items-center gap-4'>
                     {
@@ -89,8 +114,7 @@ export default function Navbar() {
                             </li>
                           ))}
                         </ul>
-                      </div>
-                      
+                      </div>   
                     </li>
                   </ul>
                 </div>
