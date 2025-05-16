@@ -5,12 +5,21 @@ import { createProducts } from '../axios/products/products';
 import axios from 'axios';
 
 export default function ProductsForm() {
-    const { register, handleSubmit, reset} = useForm();
+    const { register, handleSubmit, reset } = useForm();
     const [categories, setCategories] = useState([]);
 
     // Obtener categorías al montar el componente
     useEffect(() => {
-        axios.get('http://localhost:3000/api/v1/category')
+        // obtiene el token guardado en el navegador
+        const token = localStorage.getItem('token');
+        axios.get('http://localhost:3000/api/v1/category', {
+            headers: {
+                // Envia el token en el header
+                Authorization: `Bearer ${token}`,
+            },
+             withCredentials: true
+        })
+
             .then(res => setCategories(res.data))
             .catch(err => console.log(err));
     }, []);
@@ -26,7 +35,7 @@ export default function ProductsForm() {
             if (formData.image && formData.image[0]) {
                 data.append('image', formData.image[0]);
             }
-            
+
             const response = await createProducts(data);
             if (response && response.status === 201) {
                 alert("Producto creado correctamente");
@@ -41,7 +50,7 @@ export default function ProductsForm() {
         console.log(formData);
     }
     return (
-        <form onSubmit={handleSubmit(onSubmit)} role="profile" className="space-y-6">
+        <form onSubmit={handleSubmit(onSubmit)} role="profile" className="ml-8 mr-8 space-y-6">
             <fieldset className="border border-gray-300 p-5 rounded-lg">
                 <legend className="text-xl font-semibold text-gray-700">Registro Productos</legend>
                 <label className="block mt-4">

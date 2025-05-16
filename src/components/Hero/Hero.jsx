@@ -62,7 +62,7 @@ export default function Hero() {
                                      xl:text-[150px] font-bold'>{data.title2}</h1>
                                     <div>
                                         <Button 
-                                        text="Shop Now"
+                                        text="Shop by Category"
                                         textColor="text-white"
                                         bgcolor="bg-red-400"/>
                                     </div>
