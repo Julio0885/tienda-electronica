@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Navbar from './components/Navbar/Navbar';
 import Hero from './components/Hero/Hero';
 import Category from './components/Category/Category';
@@ -7,43 +7,60 @@ import Services from './components/Services/Services';
 import headphone from '/assets/hero/headphone.png'
 import Products from './components/Products/Products';
 import ProductsForm from './pages/ProductsForm';
-import { Routes, Route } from 'react-router';
+import { Routes, Route, Navigate } from 'react-router';
+import LoginForm from './components/LoginForm';
 
-const BannerData = {
-  discount: "30% OFF",
-  title: "Fine Smile",
-  date: "10 Jan to 28 Jan",
-  image: headphone,
-  title2: "Air Solo Bass",
-  title3: "Winter Sale",
-  title4: "Lorem ipsum, dolor sit amet consectetur adipiscing elit.",
-  bgColor: "#f42c37"
-};
+
 
 function App() {
-  
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  // Leer del localStorage al cargar
+  useEffect(() => {
+    const authStatus = localStorage.getItem('isAuthenticated');
+    if (authStatus === 'true') {
+      setIsAuthenticated(true);
+    }
+  }, []);
+
+  // Funcion para manejar el login
+  const handleLogin = () => {
+    setIsAuthenticated(true);
+    localStorage.setItem('isAuthenticated', 'true');
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    localStorage.removeItem('isAuthenticated');
+  };
 
   return (
     <>
       <div>
-        <Navbar />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Hero />
-              <Category />
-              <Category2 />
-              <Services />
-              <Products />
-            </>
-          }
-        />
-        {/* Ejemplo de otra ruta:*/}
-        <Route path="/form" element={<ProductsForm />} />
-        
-      </Routes>
+        {isAuthenticated && <Navbar onLogout={handleLogout} />}
+        <Routes>
+          <Route
+            path="/"
+            element={
+              isAuthenticated ? (
+                <>
+                  <Hero />
+                  <Category />
+                  <Category2 />
+                  <Services />
+                  <Products />
+                </>
+              ) : (
+                <Navigate to="/login" />
+              )
+
+            }
+          />
+          {/* Ejemplo de otra ruta:*/}
+          <Route path="/login" element={<LoginForm onLogin={handleLogin} />} />
+          <Route path="/form" element={<ProductsForm />} />
+
+        </Routes>
       </div>
     </>
   )

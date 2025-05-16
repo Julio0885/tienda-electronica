@@ -8,7 +8,7 @@ export const instance = axios.create({
         'Accept': 'application/json',
     },
 }); 
-//validar los status code 403 
+// validar los status code 403 
 const success = (response) => response;
 const error = (error) => { 
 

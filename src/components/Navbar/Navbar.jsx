@@ -3,6 +3,7 @@ import { IoMdSearch } from 'react-icons/io';
 import { FaShoppingCart } from "react-icons/fa";
 import { FaCaretDown } from "react-icons/fa";
 import DarkMode from './DarkMode';
+import { Link } from 'react-router-dom';
 
 const MenuLinks = [
   {
@@ -23,7 +24,7 @@ const MenuLinks = [
   {
     id: 4,
     name: "Agregar Producto",
-    link: "/#blog",
+    link: "/form",
   },
 ]
 
@@ -67,13 +68,13 @@ export default function Navbar() {
                 <ul className="flex flex-col">
                   {MenuLinks.map((data) => (
                     <li key={data.id}>
-                      <a
-                        href={data.link}
+                      <Link
+                        to={data.link}
                         className="block px-4 py-2 text-gray-700 dark:text-gray-300 hover:bg-gray-100 shadow-red-300 dark:hover:bg-gray-800"
                         onClick={() => setOpenMenu(false)}
                       >
                         {data.name}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>

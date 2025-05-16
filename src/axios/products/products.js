@@ -2,11 +2,17 @@ import { instance } from "../instance";
 
 export async function createProducts(request) {
   try {
+    const token = localStorage.getItem('token');
+
     const response = await instance.post('/products', request, {
-      headers: { 'Content-Type': 'multipart/form-data' }
+      headers: { 
+        'Content-Type': 'multipart/form-data', 
+         Authorization: `Bearer ${token}`, // 🔒 Incluir token
+    }
     });
     return response;
   } catch (error) {
+    console.error('Error al crear el producto:', error);
     throw error;
   }
 }
