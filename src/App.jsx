@@ -7,6 +7,7 @@ import Services from './components/Services/Services';
 import headphone from '/assets/hero/headphone.png'
 import Products from './components/Products/Products';
 import ProductsForm from './pages/ProductsForm';
+import ListProductForm from './pages/ListProductForm';
 import { Routes, Route, Navigate } from 'react-router';
 import LoginForm from './components/LoginForm';
 
@@ -59,6 +60,7 @@ function App() {
           {/* Ejemplo de otra ruta:*/}
           <Route path="/login" element={<LoginForm onLogin={handleLogin} />} />
           <Route path="/form" element={<ProductsForm />} />
+          <Route path="/listado" element={<ListProductForm />} />
 
         </Routes>
       </div>

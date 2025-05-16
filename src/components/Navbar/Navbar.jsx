@@ -21,29 +21,29 @@ const MenuLinks = [
     name: "About",
     link: "/#about",
   },
-  {
-    id: 4,
-    name: "Agregar Producto",
-    link: "/form",
-  },
+  // {
+  //   id: 4,
+  //   name: "Agregar Producto",
+  //   link: "/form",
+  // },
 ]
 
 const DropdownLinks = [
   {
     id: 1,
-    name: "Trending Products",
-    link: "/#",
+    name: "Agregar Producto",
+    link: "/form",
   },
   {
     id: 2,
-    name: "Best Selling",
-    link: "/#",
+    name: "Listado de Productos",
+    link: "/listado",
   },
-  {
-    id: 3,
-    name: "Top Rated",
-    link: "/#",
-  }
+  // {
+  //   id: 3,
+  //   name: "Top Rated",
+  //   link: "/#",
+  // }
 ]
 
 export default function Navbar() {
